@@ -9,6 +9,17 @@ El proyecto está compuesto por **tres repositorios independientes**:
 
 <img width="360" height="640" alt="image" src="https://github.com/user-attachments/assets/1de2e0c7-f4bd-42a7-9e99-91b24a28c68f" />
 
+---
+
+## Contexto del proyecto
+
+Este proyecto fue desarrollado como parte de una formación en **Quark Academy**.
+
+En ese momento, la academia estaba trabajando en conjunto con **Etermax** en iniciativas de capacitación para desarrolladores.  
+El nombre *“Topic Twister”* fue utilizado dentro de ese contexto educativo y coincide con el nombre de un juego de Etermax que existió públicamente en el pasado.
+
+Este repositorio **no está afiliado a Etermax**, ni corresponde a ese producto ni a ningún desarrollo interno o comercial de la empresa.  
+Se trata de un **proyecto educativo independiente**, realizado con fines de aprendizaje y portfolio.
 
 ---
 
