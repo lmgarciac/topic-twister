@@ -7,6 +7,9 @@ El proyecto está compuesto por **tres repositorios independientes**:
 - backend principal del juego (ASP.NET)
 - backend de autenticación (Kotlin / Ktor)
 
+<img width="360" height="640" alt="image" src="https://github.com/user-attachments/assets/1de2e0c7-f4bd-42a7-9e99-91b24a28c68f" />
+
+
 ---
 
 ## Repositorios
