@@ -96,17 +96,37 @@ Cobertura de pruebas:
 
 ## Cómo ejecutar el proyecto (local)
 
+### Requisitos previos
+
+Para ejecutar el proyecto localmente es necesario clonar **los tres repositorios**:
+
+- Cliente Unity
+- Backend de Login (Kotlin / Ktor)
+- Backend principal del juego (ASP.NET)
+
+Se asume que los repositorios se encuentran clonados **en el mismo directorio padre**.
+
+---
+
 ### 1. Levantar los backends
 
-Desde sus respectivos repositorios:
+Los backends deben iniciarse manualmente siguiendo las instrucciones documentadas en el archivo:
+
+📄 **[Local Backend Startup Instructions](start_backends_local.txt)**
+
+Este archivo describe paso a paso:
+- cómo iniciar el backend de autenticación (Ktor)
+- cómo iniciar el backend principal del juego (ASP.NET)
+- dependencias necesarias (JDK, .NET SDK)
+- puertos utilizados por cada servicio
+
+Una vez iniciados correctamente, los servicios deberían estar disponibles en:
 
 - **Login Backend (Ktor)**  
-  Corre en: `http://localhost:8080`
+  `http://localhost:8080`
 
 - **Game Backend (ASP.NET)**  
-  Corre en: `http://localhost:5026`
-
-> El repositorio de Unity incluye scripts (`start_backends.bat`) para facilitar el arranque local de ambos servicios.
+  `http://localhost:5026`
 
 ---
 
