@@ -1,0 +1,83 @@
+Topic Twister – Local Backend Startup (Reference Script)
+
+This file documents the steps and commands required to start the local backends.
+It is provided as a reference and convenience script, not as a production-ready tool.
+
+The following section is presented in command format, in case you would like to implement a bat file from it.
+
+-------------------------------------------------------------------------------
+
+@echo off
+setlocal
+
+REM This script documents how to manually start the local backends.
+REM You may execute it as a .bat file, or follow the steps manually.
+
+REM Requirements:
+REM - JDK installed (for Ktor / Gradle)
+REM - .NET SDK installed
+REM - Repositories cloned side-by-side
+
+echo This will start two local backends for Topic Twister Game:
+echo ==========================================
+echo Local Ktor for Auth services on http://localhost:8080
+echo Local (ASP.NET) main game logic backend on http://localhost:5026
+echo ==========================================
+echo Press Ctrl+C to cancel.
+pause
+
+REM ==================================================
+REM CONFIGURATION (edit only if your folder names differ)
+REM ==================================================
+
+set "KTOR_DIR=%~dp0login-topic-twister"
+set "DOTNET_DIR=%~dp0Topic-Twister-BackendAPI"
+
+REM --- Ports / URLs (edit if needed) ---
+set "KTOR_PORT=8080"
+set "DOTNET_URL=http://localhost:5026"
+
+REM ==================================================
+REM BACKEND STARTUP COMMANDS
+REM ==================================================
+
+echo.
+echo ==========================================
+echo  Starting backends...
+echo ==========================================
+echo.
+
+REM --- Start Ktor (Gradle) ---
+if not exist "%KTOR_DIR%\gradlew.bat" (
+  echo [ERROR] gradlew.bat not found in: %KTOR_DIR%
+  echo Make sure the folder name is correct and the repo is cloned.
+  goto :end
+)
+
+echo [Ktor] Starting in %KTOR_DIR%
+start "Auth Backend (Ktor)" cmd /k "cd /d %KTOR_DIR% && gradlew.bat run"
+
+REM --- Start ASP.NET (dotnet) ---
+set "DOTNET_API_DIR=%DOTNET_DIR%\BackendAPI"
+
+if not exist "%DOTNET_API_DIR%\BackendAPI.csproj" (
+  echo [ERROR] Could not find: "%DOTNET_API_DIR%\BackendAPI.csproj"
+  goto :end
+)
+
+echo [ASP.NET] Starting in %DOTNET_API_DIR%
+start "Game Backend (ASP.NET)" cmd /k "cd /d %DOTNET_API_DIR% && dotnet restore && dotnet run --urls %DOTNET_URL%"
+
+REM To stop the backends, simply close the opened terminal windows.
+
+echo.
+echo ==========================================
+echo  Started.
+echo  Auth (Ktor):  http://localhost:%KTOR_PORT%
+echo  API (ASP.NET): %DOTNET_URL%
+echo ==========================================
+echo.
+
+:end
+pause
+endlocal
